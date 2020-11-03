@@ -1,0 +1,3 @@
+[submodule "ResNets_3D_PyTorch"]
+	path = ResNets_3D_PyTorch
+	url = https://github.com/vuhpdc/3D-ResNets-PyTorch

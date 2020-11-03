@@ -1,0 +1,29 @@
+syntax = "proto3";
+ 
+package model_serving;
+ 
+service ModelServing{
+ rpc predict(ModelInput) returns (ModelOutput) {}
+ rpc reset(Empty) returns (Empty) {}
+}
+
+message WindowMeta {
+  uint64 start_frame = 1;
+  uint64 end_frame = 2;
+  uint64 id = 3;
+} 
+
+message ModelInput{
+ WindowMeta window_meta = 1;
+ repeated bytes input_data = 2; // may be we need some padding and alignment for efficient transfer
+ bytes input_size = 3;
+}
+ 
+message ModelOutput{
+ WindowMeta window_meta = 1;
+ bytes output_data = 2;
+ bytes output_size = 3;
+}
+
+message Empty{
+}
